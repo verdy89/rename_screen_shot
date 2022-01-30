@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly TARGET_DIR=$(defaults read com.apple.screencapture location)
+readonly TARGET_DIR=$(echo `defaults read com.apple.screencapture location` | sed -e s:~:${HOME}:g)
 readonly DEFAULT_PREFIX=$(defaults read com.apple.screencapture name)
 
 if [[ ! -d $TARGET_DIR ]]; then
